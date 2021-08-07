@@ -18,7 +18,7 @@ npm start
 
 ## What I Learned
 
-This project was a great opportunity to get familiar with Redux toolkit documentation, TypeScript, and form validation using react-hook-forms
+This project was a great opportunity to get more familiar with Redux toolkit documentation, TypeScript, and form validation using react-hook-forms
 
 ## Areas for improvement
 
@@ -28,10 +28,12 @@ This project was a great opportunity to get familiar with Redux toolkit document
 
 - Overall design and form validation could be elaborated on
 
+- Improved typing for change events when passing props to children components
+
 ###### To address this in the future, I intend to:
 
 - Leverage the benefits of using redux selectors
 
-- Utilize more component slices via redux toolkit
+- Utilize more state slices via redux toolkit
 
-- Further extraction and modularization of component API
+- Further extraction and modularization of components
