@@ -7,7 +7,6 @@ import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
 import { addUser } from '../../redux/userSlice';
 import _uniqueId from 'lodash/uniqueId';
-import { useAppDispatch } from '../../redux/hooks';
 
 type FormValues = {
   id: number;
@@ -22,17 +21,15 @@ type FormValues = {
 };
 
 const NewUserForm: React.FC = (props: any) => {
-  const [id] = useState(_uniqueId('prefix-'));
+  const [id] = useState(_uniqueId());
   const d = new Date();
   const curr_date = d.getDate();
-  const curr_month = d.getMonth() + 1; //Months are zero based
+  const curr_month = d.getMonth() + 1;
   const curr_year = d.getFullYear();
   const curr_hour = d.getHours() + ':';
   const curr_min = d.getMinutes() + ':';
   const curr_sec = d.getSeconds();
   const date = `${curr_year}-${curr_month}-${curr_date}${' '}${curr_hour}${curr_min}${curr_sec}`;
-  console.log(date);
-  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -43,28 +40,30 @@ const NewUserForm: React.FC = (props: any) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [formValues, setFormValues] = useState({
-    id: id,
-    first_name: '',
-    last_name: '',
-    middle_initial: '',
-    email: '',
-    active: true,
-    district: 0,
-    verified: true,
-    created_at: date,
-  });
-  console.log('ohyeah', formValues);
+  const onSubmit = (data) => props.addUser(data);
 
   return (
-    <Form
-      className='adduser__form'
-      onSubmit={handleSubmit((data) => {
-        setFormValues(data);
-        dispatch(addUser(formValues));
-      })}
-    >
+    <Form className='adduser__form' onSubmit={handleSubmit(onSubmit)}>
       <h1>Add User</h1>
+      <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
+        <Form.Control as='input' type='hidden' value={id} {...register('id')} />
+      </Form.Group>
+      <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
+        <Form.Control
+          as='input'
+          type='hidden'
+          value={date}
+          {...register('created_at')}
+        />
+      </Form.Group>
+      <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
+        <Form.Control
+          as='input'
+          type='hidden'
+          value='false'
+          {...register('verified')}
+        />
+      </Form.Group>
       <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
         <Form.Label>First Name</Form.Label>
         <Form.Control
@@ -73,6 +72,7 @@ const NewUserForm: React.FC = (props: any) => {
         />
         {errors.first_name && <p>{errors.first_name.message}</p>}
       </Form.Group>
+
       <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
         <Form.Label>Last Name</Form.Label>
         <Form.Control
@@ -102,7 +102,7 @@ const NewUserForm: React.FC = (props: any) => {
         <option value='4'>District 4</option>
       </Form.Select>
       <Form.Label>Is this user Active?</Form.Label>
-      <Form.Check type='checkbox' {...register('active', { required: true })} />
+      <Form.Check type='checkbox' {...register('active')} />
       <Button variant='primary' onClick={handleShow} type='submit'>
         Submit
       </Button>
@@ -118,10 +118,14 @@ const NewUserForm: React.FC = (props: any) => {
   );
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  addUser: (event) => dispatch(addUser(event)),
+});
+
 const mapStateToProps = (state) => {
   return {
     props: state.users.users,
   };
 };
 
-export default connect(mapStateToProps)(NewUserForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NewUserForm);

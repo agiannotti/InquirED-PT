@@ -15,20 +15,7 @@ export const userSlice = createSlice({
   initialState: initialUserState,
   reducers: {
     addUser: (state, action: PayloadAction<UserData>) => {
-      state.users = [
-        ...state.users,
-        action.payload,
-        //   {
-        //     first_name: '',
-        //     last_name: '',
-        //     email: '',
-        //     verified: true,
-        //     created_at: Date,
-        //     middle_initial: '',
-        //     district: 0,
-        //     active: '',
-        //   },
-      ];
+      state.users = [...state.users, action.payload];
     },
     editUser: (state, action: PayloadAction<UserData>) => {
       console.log(action.payload);
