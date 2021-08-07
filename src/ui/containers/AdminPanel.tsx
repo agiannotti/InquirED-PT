@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { getUsers, selectUsers } from '../../redux/userSlice';
-// import { filterByDistrict } from '../../redux/filterSlice';
 import UserTable from '../components/UserTable';
 import Filter from '../components/Filter';
 import { connect } from 'react-redux';
@@ -42,17 +41,11 @@ const AdminPanel = ({ users }: any) => {
       return user.active == isChecked;
     });
     setFilteredUsers(filtered);
-
-    // isChecked ? setFilteredUsers(filtered) : setFilteredUsers(users);
-    // console.log(filteredUsers, ' poops and props');
   };
 
   const usersToDisplay =
     Number(districtInput) === 0 && !isChecked ? users : filteredUsers;
 
-  console.log(usersToDisplay);
-
-  // const usersToDisplay = selected.users.filter((user) => user.active);
   return (
     <div className='app-admin-panel container'>
       <div className='col'>

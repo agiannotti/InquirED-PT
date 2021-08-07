@@ -2,14 +2,10 @@ import React from 'react';
 import { Users } from '../../types/types';
 import '../stylesheets/usertable.css';
 import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux';
+import { removeUser } from '../../redux/userSlice';
 
 const UserTable: React.FC<Users> = ({ users }: Users) => {
-  // const [userTable, setUserTable] = React.useState<UserData[] | []>([]);
-
-  React.useEffect(() => {
-    console.log(users, 'USERS IN TABLE');
-  }, [users]);
-
   const tableRows = users.map((user) => (
     <tr key={user.id}>
       <td>
@@ -43,4 +39,13 @@ const UserTable: React.FC<Users> = ({ users }: Users) => {
   );
 };
 
-export default UserTable;
+const mapDispatchToProps = (dispatch) => ({
+  removeUser: (event) => dispatch(removeUser(event)),
+});
+
+const mapStateToProps = (state) => {
+  return {
+    props: state.users.users,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(UserTable);

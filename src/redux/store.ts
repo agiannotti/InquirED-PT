@@ -6,7 +6,6 @@ const store = configureStore({
     users: userSliceReducer,
   },
 });
-// export const selectUserList = (state: RootState) => state.users.users; //eslint-disable-line
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

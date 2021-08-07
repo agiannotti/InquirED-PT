@@ -11,6 +11,7 @@ const Filter = (props: FilterProps): JSX.Element => {
     handleChangeCheckbox,
     isChecked,
   } = props;
+
   // when textbox is toggled "true",
   // isChecked -> true -> state change ==> display users who are active
   // textbox -> false -> state change ==> display all users

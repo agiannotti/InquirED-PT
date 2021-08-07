@@ -1,6 +1,5 @@
 import React from 'react';
 import '../stylesheets/filter.css';
-// import { Users } from '../../types/types';
 
 interface CheckboxProps {
   checked: boolean;

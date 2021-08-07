@@ -9,6 +9,7 @@ import { addUser } from '../../redux/userSlice';
 import _uniqueId from 'lodash/uniqueId';
 import { FormValues } from '../../types/types';
 
+//eslint-disable-next-line
 const NewUserForm: React.FC = (props: any) => {
   const [id] = useState(_uniqueId());
   const d = new Date();

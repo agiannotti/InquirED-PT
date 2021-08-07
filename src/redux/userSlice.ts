@@ -20,8 +20,8 @@ export const userSlice = createSlice({
     editUser: (state, action: PayloadAction<UserData>) => {
       console.log(action.payload);
     },
-    deleteUser: (state, action: PayloadAction<UserData>) => {
-      console.log(action.payload);
+    removeUser: (state, action: PayloadAction<number>) => {
+      state.users = state.users.filter(({ id }) => id != action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -38,7 +38,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { addUser, editUser, deleteUser } = userSlice.actions;
+export const { addUser, editUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;
 
