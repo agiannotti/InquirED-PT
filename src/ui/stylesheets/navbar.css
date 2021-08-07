@@ -15,14 +15,14 @@
   box-shadow: 0 2px 92px 0 rgba(0, 0, 0, 0.07);
 }
 
-/* .navbar-brand {
+.navbar-brand {
   font-family: Motor-Oil;
   font-size: 18px;
   letter-spacing: 6px;
   font-weight: 600;
   padding-left: 22px;
   font-size: 1.25rem;
-} */
+}
 
 .navbar-nav {
   display: flex;

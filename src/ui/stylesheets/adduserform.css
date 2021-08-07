@@ -4,7 +4,7 @@
   justify-content: center;
   margin: auto;
   margin-top: 0;
-  width: 60%;
+  width: 75%;
   padding: 20px;
   border: 1px solid gray;
   margin-top: 12px;
@@ -43,4 +43,9 @@
   margin: auto;
   margin-top: 12px;
   padding: 12px;
+}
+
+.err_msg {
+  display: flex;
+  color: red;
 }

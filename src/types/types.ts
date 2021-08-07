@@ -30,3 +30,15 @@ export interface FilterProps {
   handleChangeCheckbox: React.ChangeEventHandler<HTMLInputElement>;
   isChecked: boolean;
 }
+
+export type FormValues = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  middle_initial: string;
+  email: string;
+  active: boolean;
+  district: number;
+  verified: boolean;
+  created_at: string;
+};

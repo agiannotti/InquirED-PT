@@ -7,18 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
 import { addUser } from '../../redux/userSlice';
 import _uniqueId from 'lodash/uniqueId';
-
-type FormValues = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  middle_initial: string;
-  email: string;
-  active: boolean;
-  district: number;
-  verified: boolean;
-  created_at: string;
-};
+import { FormValues } from '../../types/types';
 
 const NewUserForm: React.FC = (props: any) => {
   const [id] = useState(_uniqueId());
@@ -40,7 +29,9 @@ const NewUserForm: React.FC = (props: any) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const onSubmit = (data) => props.addUser(data);
+  const onSubmit = (data) => {
+    props.addUser(data);
+  };
 
   return (
     <Form className='adduser__form' onSubmit={handleSubmit(onSubmit)}>
@@ -68,28 +59,43 @@ const NewUserForm: React.FC = (props: any) => {
         <Form.Label>First Name</Form.Label>
         <Form.Control
           as='input'
-          {...register('first_name', { required: 'First name required' })}
+          {...register('first_name', {
+            required: 'First name is required',
+          })}
         />
-        {errors.first_name && <p>{errors.first_name.message}</p>}
+        {errors.first_name && (
+          <p className='err_msg'>{errors.first_name.message}</p>
+        )}
       </Form.Group>
-
       <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
         <Form.Label>Last Name</Form.Label>
         <Form.Control
           as='input'
-          {...register('last_name', { required: true })}
+          {...register('last_name', {
+            required: 'Last name is required',
+            validate: (value) => value.length > 3,
+          })}
         />
+        {errors.last_name && (
+          <p className='err_msg'>{errors.last_name.message}</p>
+        )}
       </Form.Group>
       <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
         <Form.Label>Middle Initial</Form.Label>
         <Form.Control
           as='input'
-          {...register('middle_initial', { maxLength: 1 })}
+          {...register('middle_initial', {
+            maxLength: 1,
+          })}
         />
       </Form.Group>
       <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
         <Form.Label>Email</Form.Label>
-        <Form.Control as='input' {...register('email', { required: true })} />
+        <Form.Control
+          as='input'
+          {...register('email', { required: 'Email is required' })}
+        />
+        {errors.email && <p className='err_msg'>{errors.email.message}</p>}
       </Form.Group>
       <Form.Label>District</Form.Label>
       <Form.Select
@@ -106,9 +112,10 @@ const NewUserForm: React.FC = (props: any) => {
       <Button variant='primary' onClick={handleShow} type='submit'>
         Submit
       </Button>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>User Added!</Modal.Title>
+          <Modal.Title>User Added</Modal.Title>
         </Modal.Header>
         <Button variant='secondary' onClick={handleClose}>
           Close
