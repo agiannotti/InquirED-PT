@@ -1,0 +1,46 @@
+.adduser__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 0;
+  width: 60%;
+  padding: 20px;
+  border: 1px solid gray;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: rgba(235, 226, 226, 0.815);
+  box-shadow: 0 2px 92px 0 rgba(0, 0, 0, 0.07);
+}
+
+.adduser__form > h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.adduser__form > button {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 14px;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-left: 165px;
+}
+
+.modal-content .btn {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 12px;
+  padding: 12px;
+}

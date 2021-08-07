@@ -1,0 +1,27 @@
+body {
+  background: #f2f2f2;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+#root {
+  background-color: #f2f2f2;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  background-color: #f2f2f2;
+}
+
+.app-admin-panel {
+  min-height: 100vh;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}

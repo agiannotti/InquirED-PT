@@ -1,0 +1,112 @@
+@font-face {
+  font-family: Motor-Oil;
+  src: url('../../assets/fonts/MotorOil1937M54.woff');
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 18px;
+  margin-top: 12px;
+  background: #494964;
+  box-shadow: 0 2px 92px 0 rgba(0, 0, 0, 0.07);
+}
+
+/* .navbar-brand {
+  font-family: Motor-Oil;
+  font-size: 18px;
+  letter-spacing: 6px;
+  font-weight: 600;
+  padding-left: 22px;
+  font-size: 1.25rem;
+} */
+
+.navbar-nav {
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-item {
+  margin-left: 1rem;
+  margin-bottom: 0;
+  border-bottom: 5px solid transparent;
+}
+.nav-link {
+  color: white !important;
+  padding: 24px 14px !important;
+  margin-left: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+/* .nav-item.active .nav-link {
+  border-bottom: 3px solid yellow;
+} */
+
+.nav-btn {
+  color: white;
+  border: 1px solid #a3a4b1;
+  margin-left: 1rem;
+}
+.nav-btn:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+.avatar {
+  display: inline-block;
+  padding-top: 6px;
+  font-weight: 500;
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-top: 3px;
+  width: 40px;
+  height: 33px;
+  line-height: 1.8;
+  background: #718c74;
+  color: #fff;
+  border-radius: 25px;
+}
+
+/* .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  padding: 0;
+} */
+
+.nav-main .nav-link,
+.footer .nav-link {
+  padding: 24px 14px 24px !important;
+  margin-left: 10px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 80%;
+  left: auto;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 20px 100px 20px 100px;
+  }
+}

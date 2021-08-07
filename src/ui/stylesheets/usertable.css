@@ -1,0 +1,32 @@
+.usertable {
+  justify-content: center;
+  margin: auto;
+}
+
+th,
+td {
+  border-top: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+}
+
+thead,
+td {
+  text-align: center;
+  padding: 3px;
+}
+
+table {
+  width: 90%;
+}
+
+button.btn {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  justify-self: center;
+  width: 60px;
+  background-color: rgba(82, 148, 184, 0.919);
+  border-color: black;
+  margin: 2px;
+  font-size: 12px;
+}

@@ -1,0 +1,32 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 30px;
+  border: 1px solid gray;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(235, 226, 226, 0.815);
+  width: 60%;
+
+  box-shadow: 0 2px 92px 0 rgba(0, 0, 0, 0.07);
+}
+
+.filter > label {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.__checkbox {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  align-items: center;
+}
