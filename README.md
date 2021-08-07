@@ -2,6 +2,11 @@
 
 ## Summary
 
+```
+npm install
+npm start
+```
+
 ## User Stories
 
 ## Features
