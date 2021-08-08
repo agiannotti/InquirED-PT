@@ -12,11 +12,6 @@ const Filter = (props: FilterProps): JSX.Element => {
     isChecked,
   } = props;
 
-  // when textbox is toggled "true",
-  // isChecked -> true -> state change ==> display users who are active
-  // textbox -> false -> state change ==> display all users
-  // all users should match selected district
-
   return (
     <div className='filter'>
       <label htmlFor='district'>Filter by District </label>

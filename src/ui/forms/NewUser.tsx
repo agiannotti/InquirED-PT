@@ -10,7 +10,7 @@ import _uniqueId from 'lodash/uniqueId';
 import { FormValues } from '../../types/types';
 
 //eslint-disable-next-line
-const NewUserForm: React.FC = (props: any) => {
+const NewUserForm = (props: any) => {
   const [id] = useState(_uniqueId('new_'));
   const d = new Date();
   const curr_date = d.getDate();

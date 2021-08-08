@@ -20,8 +20,7 @@ const AdminPanel = ({ users }: any) => {
     dispatch(getUsers());
   }, []);
 
-  //eslint-disable-next-line
-  const handleChangeDistrict = (evt: any) => {
+  const handleChangeDistrict = (evt) => {
     const input: number = evt.target.value;
     handleFilterByDistrict(input);
   };
@@ -34,8 +33,7 @@ const AdminPanel = ({ users }: any) => {
     setFilteredUsers(filtered);
   };
 
-  //eslint-disable-next-line
-  const handleChangeCheckbox = (evt: any) => {
+  const handleChangeCheckbox = () => {
     setIsChecked(!isChecked);
     const filtered = selected.users.filter((user) => {
       return user.active == isChecked;
