@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import '../stylesheets/filter.css';
 
 interface CheckboxProps {
@@ -6,9 +6,7 @@ interface CheckboxProps {
   handleChangeCheckbox: React.ChangeEventHandler;
 }
 
-export const CheckboxComponent: React.FC<CheckboxProps> = (
-  props: CheckboxProps
-) => {
+export const CheckboxComponent: FC<CheckboxProps> = (props: CheckboxProps) => {
   const { checked, handleChangeCheckbox } = props;
 
   return (

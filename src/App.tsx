@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Main from './ui/layout/Main';
 import Navigation from './ui/layout/Navigation';
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <div className='App container'>
       <Navigation />

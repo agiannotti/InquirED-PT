@@ -24,7 +24,9 @@ This project was a great opportunity to get more familiar with Redux toolkit doc
 
 - Modularization
 
-- Relying on component state for filter function created many issues for filtering by active
+- pagination
+
+- Relying on component state for filter function created many issues for filtering by active, and using user id to edit/delete filtered results
 
 - Overall design and form validation could be elaborated on
 
