@@ -4,7 +4,7 @@ import '../stylesheets/usertable.css';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import { removeUser, editUser } from '../../redux/userSlice';
-
+//eslint-disable-next-line
 const UserTable: FC<Users> = (props: any) => {
   const { users } = props;
   const handleEdit = (evt) => {
@@ -12,7 +12,6 @@ const UserTable: FC<Users> = (props: any) => {
   };
 
   const handleDelete = (evt) => {
-    console.log(evt);
     props.removeUser(evt.target.value);
   };
 
