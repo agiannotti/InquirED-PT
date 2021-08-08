@@ -4,6 +4,7 @@ import '../stylesheets/usertable.css';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import { removeUser, editUser } from '../../redux/userSlice';
+import EditModal from '../forms/EditModal';
 //eslint-disable-next-line
 const UserTable: FC<Users> = (props: any) => {
   const { users } = props;
@@ -35,9 +36,10 @@ const UserTable: FC<Users> = (props: any) => {
         <td>{district}</td>
         <td>{created_at}</td>
         <td>
-          <Button variant='primary' onClick={handleEdit} value={id}>
+          {/* <Button variant='primary' onClick={handleEdit} value={id}>
             Edit
-          </Button>
+          </Button> */}
+          <EditModal {...props} />
 
           <Button onClick={handleDelete} value={id}>
             Delete
