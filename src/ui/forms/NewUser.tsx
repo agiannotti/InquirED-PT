@@ -11,7 +11,11 @@ import { FormValues } from '../../types/types';
 
 //eslint-disable-next-line
 const NewUserForm = (props: any) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [id] = useState(_uniqueId('new_'));
+
   const d = new Date();
   const curr_date = d.getDate();
   const curr_month = d.getMonth() + 1;
@@ -26,9 +30,7 @@ const NewUserForm = (props: any) => {
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm<FormValues>({ mode: 'onChange' });
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
   const onSubmit = (data) => {
     props.addUser(data);
   };

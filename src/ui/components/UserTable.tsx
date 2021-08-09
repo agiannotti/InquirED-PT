@@ -39,7 +39,7 @@ const UserTable: FC<Users> = (props: any) => {
           {/* <Button variant='primary' onClick={handleEdit} value={id}>
             Edit
           </Button> */}
-          <EditModal {...props} />
+          <EditModal value={id} />
 
           <Button onClick={handleDelete} value={id}>
             Delete

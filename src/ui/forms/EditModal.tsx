@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -6,26 +6,37 @@ import { useForm } from 'react-hook-form';
 import { FormValues } from '../../types/types';
 import { editUser } from '../../redux/userSlice';
 import { connect } from 'react-redux';
+import { selectUsers } from '../../redux/userSlice';
+import { useAppSelector } from '../../redux/hooks';
 
 const EditModal = (props: any) => {
-  const onSubmit = (data) => {
-    props.editUser(data);
+  const selected = useAppSelector(selectUsers);
+  const [userById, setUserById] = useState();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+
+  useEffect(() => {
+    setUserById(selected.users.filter((user) => user.id == props.value));
+  }, []);
+
+  const handleShow = () => {
+    setShow(true);
+    console.log(userById);
   };
+
+  const onSubmit = (props) => {
+    editUser(props);
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm<FormValues>({ mode: 'onChange' });
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
   return (
     <>
-      <Button
-        variant='primary'
-        // disabled={!isDirty || !isValid}
-        onClick={handleShow}
-      >
+      <Button variant='primary' onClick={handleShow} value={props}>
         Edit
       </Button>
       <Modal show={show} onHide={handleClose}>
@@ -42,7 +53,7 @@ const EditModal = (props: any) => {
                 value={id}
                 {...register('id')}
               />
-            </Form.Group> */}
+            </Form.Group> 
             {/* <Form.Group className='mb-3' controlId='_date'>
               <Form.Control
                 as='input'
