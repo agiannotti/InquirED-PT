@@ -9,7 +9,17 @@ import { connect } from 'react-redux';
 import { Users } from '../../types/types';
 
 const EditModal = (props: any) => {
-  const [userById, setUserById] = useState<any>([]);
+  const [userById, setUserById] = useState<any>({
+    id: '',
+    first_name: '',
+    last_name: '',
+    middle_initial: '',
+    email: '',
+    active: '',
+    district: '',
+    verified: '',
+    created_at: '',
+  });
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
@@ -22,6 +32,9 @@ const EditModal = (props: any) => {
     console.log(userById);
   };
 
+  const showData = () => {
+    console.log(userById);
+  };
   const onSubmit = (props) => {
     editUser(props);
   };
@@ -42,18 +55,12 @@ const EditModal = (props: any) => {
           <Form className='adduser__form' onSubmit={handleSubmit(onSubmit)}>
             <h1>Edit User</h1>
             <Form.Group controlId='_id' className='mb-3'>
-              <Form.Control
-                as='input'
-                type='hidden'
-                value={userById[0].id}
-                {...register('id')}
-              />
+              <Form.Control as='input' type='hidden' {...register('id')} />
             </Form.Group>
             <Form.Group className='mb-3' controlId='_date'>
               <Form.Control
                 as='input'
                 type='hidden'
-                value={userById[0].date}
                 {...register('created_at')}
               />
             </Form.Group>
@@ -61,7 +68,6 @@ const EditModal = (props: any) => {
               <Form.Control
                 as='input'
                 type='hidden'
-                value={userById[0].verified}
                 {...register('verified')}
               />
             </Form.Group>
@@ -69,7 +75,6 @@ const EditModal = (props: any) => {
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 as='input'
-                placeholder={userById[0].first_name}
                 {...register('first_name', {
                   required: 'First name is required',
                 })}
@@ -82,7 +87,7 @@ const EditModal = (props: any) => {
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 as='input'
-                placeholder={userById[0].last_name}
+                // placeholder={userById[0].first_name}
                 {...register('last_name', {
                   required: 'Last name is required',
                 })}
@@ -95,7 +100,6 @@ const EditModal = (props: any) => {
               <Form.Label>Middle Initial</Form.Label>
               <Form.Control
                 as='input'
-                placeholder={userById[0].middle_initial}
                 {...register('middle_initial', {
                   maxLength: 1,
                 })}
@@ -105,7 +109,6 @@ const EditModal = (props: any) => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 as='input'
-                placeholder={userById[0].email}
                 {...register('email', { required: 'Email is required' })}
               />
               {errors.email && (
@@ -115,7 +118,6 @@ const EditModal = (props: any) => {
             <Form.Group controlId='select'>
               <Form.Label>District</Form.Label>
               <Form.Select
-                defaultValue={userById[0].district}
                 aria-label='Default select example'
                 {...register('district', { valueAsNumber: true })}
               >
@@ -127,11 +129,7 @@ const EditModal = (props: any) => {
             </Form.Group>
             <Form.Group controlId='checkbox'>
               <Form.Label>Is this user Active?</Form.Label>
-              <Form.Check
-                type='checkbox'
-                value={userById[0].active}
-                {...register('active')}
-              />
+              <Form.Check type='checkbox' {...register('active')} />
             </Form.Group>
           </Form>
           <Button
@@ -142,7 +140,7 @@ const EditModal = (props: any) => {
           >
             Submit
           </Button>
-          <Button variant='secondary' onClick={handleClose}>
+          <Button variant='secondary' onClick={showData}>
             Cancel
           </Button>
         </Modal.Body>
