@@ -6,17 +6,15 @@ import { useForm } from 'react-hook-form';
 import { FormValues } from '../../types/types';
 import { editUser } from '../../redux/userSlice';
 import { connect } from 'react-redux';
-import { selectUsers } from '../../redux/userSlice';
-import { useAppSelector } from '../../redux/hooks';
+import { Users } from '../../types/types';
 
 const EditModal = (props: any) => {
-  const selected = useAppSelector(selectUsers);
-  const [userById, setUserById] = useState();
+  const [userById, setUserById] = useState<any>([]);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    setUserById(selected.users.filter((user) => user.id == props.value));
+    setUserById(props.props.filter((user) => user.id == props.value));
   }, []);
 
   const handleShow = () => {
@@ -33,40 +31,37 @@ const EditModal = (props: any) => {
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm<FormValues>({ mode: 'onChange' });
-
   return (
     <>
       <Button variant='primary' onClick={handleShow} value={props}>
         Edit
       </Button>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>User Added</Modal.Title>
-        </Modal.Header>
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <Form className='adduser__form' onSubmit={handleSubmit(onSubmit)}>
             <h1>Edit User</h1>
-            {/* <Form.Group controlId='_id' className='mb-3'>
+            <Form.Group controlId='_id' className='mb-3'>
               <Form.Control
                 as='input'
                 type='hidden'
-                value={id}
+                value={userById[0].id}
                 {...register('id')}
               />
-            </Form.Group> 
-            {/* <Form.Group className='mb-3' controlId='_date'>
+            </Form.Group>
+            <Form.Group className='mb-3' controlId='_date'>
               <Form.Control
                 as='input'
                 type='hidden'
-                value={date}
+                value={userById[0].date}
                 {...register('created_at')}
               />
-            </Form.Group> */}
+            </Form.Group>
             <Form.Group controlId='verified' className='mb-3'>
               <Form.Control
                 as='input'
                 type='hidden'
-                value='false'
+                value={userById[0].verified}
                 {...register('verified')}
               />
             </Form.Group>
@@ -74,6 +69,7 @@ const EditModal = (props: any) => {
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 as='input'
+                placeholder={userById[0].first_name}
                 {...register('first_name', {
                   required: 'First name is required',
                 })}
@@ -86,6 +82,7 @@ const EditModal = (props: any) => {
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 as='input'
+                placeholder={userById[0].last_name}
                 {...register('last_name', {
                   required: 'Last name is required',
                 })}
@@ -98,6 +95,7 @@ const EditModal = (props: any) => {
               <Form.Label>Middle Initial</Form.Label>
               <Form.Control
                 as='input'
+                placeholder={userById[0].middle_initial}
                 {...register('middle_initial', {
                   maxLength: 1,
                 })}
@@ -107,6 +105,7 @@ const EditModal = (props: any) => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 as='input'
+                placeholder={userById[0].email}
                 {...register('email', { required: 'Email is required' })}
               />
               {errors.email && (
@@ -116,6 +115,7 @@ const EditModal = (props: any) => {
             <Form.Group controlId='select'>
               <Form.Label>District</Form.Label>
               <Form.Select
+                defaultValue={userById[0].district}
                 aria-label='Default select example'
                 {...register('district', { valueAsNumber: true })}
               >
@@ -127,7 +127,11 @@ const EditModal = (props: any) => {
             </Form.Group>
             <Form.Group controlId='checkbox'>
               <Form.Label>Is this user Active?</Form.Label>
-              <Form.Check type='checkbox' {...register('active')} />
+              <Form.Check
+                type='checkbox'
+                value={userById[0].active}
+                {...register('active')}
+              />
             </Form.Group>
           </Form>
           <Button
