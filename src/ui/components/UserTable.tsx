@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import { removeUser, editUser } from '../../redux/userSlice';
 import EditModal from '../forms/EditModal';
-//eslint-disable-next-line
+
 const UserTable: FC<Users> = (props: any) => {
   const { users } = props;
   const handleEdit = (evt) => {

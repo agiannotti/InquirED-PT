@@ -8,7 +8,6 @@ import { UserData } from '../../types/types';
 import NewUserForm from '../forms/NewUser';
 import '../stylesheets/main.css';
 
-//eslint-disable-next-line
 const AdminPanel = ({ users }: any) => {
   const [districtInput, setDistrictInput] = useState<number>(0);
   const [filteredUsers, setFilteredUsers] = useState<UserData[]>([]);

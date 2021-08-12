@@ -9,7 +9,6 @@ import { addUser } from '../../redux/userSlice';
 import _uniqueId from 'lodash/uniqueId';
 import { FormValues } from '../../types/types';
 
-//eslint-disable-next-line
 const NewUserForm = (props: any) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

@@ -42,5 +42,4 @@ export const { addUser, editUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;
 
-//eslint-disable-next-line
 export const selectUsers = (state) => state.users;
